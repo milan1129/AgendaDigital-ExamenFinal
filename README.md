@@ -1,7 +1,7 @@
 # Agenda Digital - Examen Final Lógica Computacional
 
-*Nombre:* Tu Nombre Completo  
-*Identificación:* Tu Número de Documento
+*Nombre:* Bianca Lorena Noreña Pabon 
+*Identificación:* 1045686254
 
 ## Descripción
 Agenda Digital desarrollada como parte del examen final del curso de Lógica Computacional. Permite registrar, buscar y listar personas, almacenando los datos en el navegador usando localStorage.
@@ -18,8 +18,8 @@ Agenda Digital desarrollada como parte del examen final del curso de Lógica Com
 2. Abre el archivo index.html en tu navegador.
 3. ¡Empieza a usar la agenda!
 
-## GitHub Pages (opcional)
-[Enlace a GitHub Pages si lo publicas aquí]
+## GitHub Pages
+https://milan1129.github.io/AgendaDigital-ExamenFinal/
 
 ## Repositorio
-[Enlace al repositorio en GitHub]
+https://github.com/milan1129/AgendaDigital-ExamenFinal

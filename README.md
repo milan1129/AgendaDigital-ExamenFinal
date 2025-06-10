@@ -22,4 +22,4 @@ Agenda Digital desarrollada como parte del examen final del curso de Lógica Com
 (https://github.com/milan1129/AgendaDigital-ExamenFinal.git)
 
 ## Repositorio
-[Enlace al repositorio en GitHub]
+ https://milan1129.github.io/AgendaDigital-ExamenFinal/

@@ -19,7 +19,7 @@ Agenda Digital desarrollada como parte del examen final del curso de Lógica Com
 3. ¡Empieza a usar la agenda!
 
 ## GitHub Pages (opcional)
-[Enlace a GitHub Pages si lo publicas aquí]
+(https://github.com/milan1129/AgendaDigital-ExamenFinal.git)
 
 ## Repositorio
 [Enlace al repositorio en GitHub]

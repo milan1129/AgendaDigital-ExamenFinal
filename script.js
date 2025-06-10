@@ -5,7 +5,6 @@ function mostrarSeccion(seccion) {
   document.getElementById(seccion).classList.remove("hidden");
 }
 
-// Guardar persona
 document.getElementById("formAgregar").addEventListener("submit", function (e) {
   e.preventDefault();
   const persona = {
@@ -23,62 +22,39 @@ document.getElementById("formAgregar").addEventListener("submit", function (e) {
   this.reset();
 });
 
-function mostrarSeccion(seccion) {
-  document.getElementById("agregar").classList.add("hidden");
-  document.getElementById("buscar").classList.add("hidden");
-  document.getElementById("listar").classList.add("hidden");
-  document.getElementById(seccion).classList.remove("hidden");
-}
-
-// Guardar persona
-document.getElementById("formAgregar").addEventListener("submit", function (e) {
+document.getElementById("formBuscar").addEventListener("submit", function (e) {
   e.preventDefault();
-  const persona = {
-    id: document.getElementById("id").value.trim(),
-    nombres: document.getElementById("nombres").value.trim(),
-    apellidos: document.getElementById("apellidos").value.trim(),
-    direccion: document.getElementById("direccion").value.trim(),
-    telefono: document.getElementById("telefono").value.trim()
-  };
+  const criterio = document.getElementById("criterio").value;
+  const valor = document.getElementById("valorBusqueda").value.trim().toLowerCase();
 
   let personas = JSON.parse(localStorage.getItem("personas")) || [];
-  personas.push(persona);
-  localStorage.setItem("personas", JSON.stringify(personas));
-  alert("Persona guardada exitosamente.");
-  this.reset();
-});
+  let resultados = personas.filter(p => p[criterio].toLowerCase().includes(valor));
 
-// Buscar persona
-document.getElementById('form-buscar').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const criterio = document.getElementById('criterio').value;
-  const valor = document.getElementById('valor-busqueda').value.toLowerCase();
-  const personas = JSON.parse(localStorage.getItem('personas')) || [];
-
-  const resultados = personas.filter(p =>
-    p[criterio].toLowerCase().includes(valor)
-  );
-
-  let html = '';
+  const resultadoDiv = document.getElementById("resultadoBusqueda");
   if (resultados.length > 0) {
-    html += '<table border="1"><tr><th>Documento</th><th>Nombres</th><th>Apellidos</th><th>Dirección</th><th>Teléfono</th></tr>';
+    let tabla = "<table><tr><th>ID</th><th>Nombres</th><th>Apellidos</th><th>Dirección</th><th>Teléfono</th></tr>";
     resultados.forEach(p => {
-      html += `<tr><td>${p.id}</td><td>${p.nombres}</td><td>${p.apellidos}</td><td>${p.direccion}</td><td>${p.telefono}</td></tr>`;
+      tabla += `<tr><td>${p.id}</td><td>${p.nombres}</td><td>${p.apellidos}</td><td>${p.direccion}</td><td>${p.telefono}</td></tr>`;
     });
-    html += '</table>';
+    tabla += "</table>";
+    resultadoDiv.innerHTML = tabla;
   } else {
-    html = 'No se encontraron resultados.';
+    resultadoDiv.innerHTML = "No se encontraron resultados.";
   }
-  document.getElementById('resultado-busqueda').innerHTML = html;
 });
 
-// Listar personas
-function listarPersonas() {
-  const personas = JSON.parse(localStorage.getItem('personas')) || [];
-  let html = '<table border="1"><tr><th>Documento</th><th>Nombres</th><th>Apellidos</th><th>Dirección</th><th>Teléfono</th></tr>';
-  personas.forEach(p => {
-    html += `<tr><td>${p.id}</td><td>${p.nombres}</td><td>${p.apellidos}</td><td>${p.direccion}</td><td>${p.telefono}</td></tr>`;
-  });
-  html += '</table>';
-  document.getElementById('lista-personas').innerHTML = html;
+function cargarLista() {
+  let personas = JSON.parse(localStorage.getItem("personas")) || [];
+  const listaDiv = document.getElementById("listaPersonas");
+
+  if (personas.length > 0) {
+    let tabla = "<table><tr><th>ID</th><th>Nombres</th><th>Apellidos</th><th>Dirección</th><th>Teléfono</th></tr>";
+    personas.forEach(p => {
+      tabla += `<tr><td>${p.id}</td><td>${p.nombres}</td><td>${p.apellidos}</td><td>${p.direccion}</td><td>${p.telefono}</td></tr>`;
+    });
+    tabla += "</table>";
+    listaDiv.innerHTML = tabla;
+  } else {
+    listaDiv.innerHTML = "No hay personas registradas.";
+  }
 }
